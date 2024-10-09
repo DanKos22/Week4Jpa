@@ -39,6 +39,20 @@ public class ProductController {
     }
 
     @PutMapping("/updateProduct/{id}")
+    public Product updateProduct(@PathVariable Long id, @RequestBody Product updatedProduct) {
+        return productService.updateProduct(id, updatedProduct);
+    }
+
+    @DeleteMapping("/deleteProduct/{id}")
+    public ResponseEntity<List<Product>> deleteProduct(@PathVariable Long id) {
+        productList = productService.deleteProduct(id);
+        return ResponseEntity.ok(productList);
+    }
+}
+
+
+/*
+    @PutMapping("/updateProduct/{id}")
     public ResponseEntity<Product> updateProduct(@PathVariable int id, @RequestBody Product updatedProduct) {
         Product existingProduct = findProductById(id);
 
@@ -50,8 +64,9 @@ public class ProductController {
         } else {
             return ResponseEntity.notFound().build();
         }
-    }
+    }*/
 
+/*
     @DeleteMapping("/deleteProduct/{id}")
     public ResponseEntity<List<Product>> deleteProduct(@PathVariable int id) {
         Product existingProduct = findProductById(id);
@@ -62,5 +77,4 @@ public class ProductController {
         } else {
             return ResponseEntity.notFound().build();
         }
-    }
-}
+    }*/
