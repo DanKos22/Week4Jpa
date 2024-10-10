@@ -32,10 +32,21 @@ public class ProductService {
         return null;
     }
 
-    public Product updateProduct(Long id, Product product){
-        /*Product existingProduct = productRepository.findById(id);
+    public List<Product> updateProduct(Long id, Product product){
+        //Product existingProduct = productRepository.findById(id);
 
-            if (existingProduct.getId() == id) {
+
+       // if(existingProduct.e)
+        if(productRepository.existsById(id)){
+            product.setId(id);
+            /*product.setProductName(product.getProductName());
+            existingProduct.setProductDescription(product.getProductDescription());
+            existingProduct.setProductPrice(product.getProductPrice());
+            existingProduct.setProductCode(product.getProductCode());*/
+            productRepository.save(product);
+        }
+
+            /*if (existingProduct.getId() == id) {
                 existingProduct.setProductName(product.getProductName());
                 existingProduct.setProductDescription(product.getProductDescription());
                 existingProduct.setProductPrice(product.getProductPrice());
@@ -45,16 +56,19 @@ public class ProductService {
 
         /*productRepository.(product);
         return productRepository.findAll();*/
-        return product;
+        return productRepository.findAll();
     }
 
     public List<Product> deleteProduct(Long id){
-        Product existingProduct = findProductById(id);
+        //Product existingProduct = productRepository.findProductById(id);
 
-        if(existingProduct != null){
+        if(productRepository.existsById(id)){
+            productRepository.deleteById(id);
+        }
+        /*if(existingProduct.getId() == id){
             productRepository.delete(existingProduct);
 
-        }
+        }*/
         //productRepository.delete(product);
         return productRepository.findAll();
 
