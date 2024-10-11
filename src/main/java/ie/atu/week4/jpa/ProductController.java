@@ -12,10 +12,11 @@ public class ProductController {
     private List<Product> productList = new ArrayList<>();
 
     private ProductService productService;
+
     public ProductController(ProductService productService) {
         this.productService = productService;
-
     }
+
     @GetMapping("/getProducts")
     public List<Product> getProducts() {
         return productList;
@@ -23,7 +24,6 @@ public class ProductController {
 
     @PostMapping("/addProduct")
     public ResponseEntity<List> addProduct(@RequestBody Product product) {
-
         productList = productService.addProduct(product);
         //productList.add(product);
         return ResponseEntity.ok(productList);
