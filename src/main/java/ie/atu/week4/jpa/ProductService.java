@@ -33,45 +33,17 @@ public class ProductService {
     }
 
     public List<Product> updateProduct(Long id, Product product){
-        //Product existingProduct = productRepository.findById(id);
-
-
-       // if(existingProduct.e)
         if(productRepository.existsById(id)){
             product.setId(id);
-            /*product.setProductName(product.getProductName());
-            existingProduct.setProductDescription(product.getProductDescription());
-            existingProduct.setProductPrice(product.getProductPrice());
-            existingProduct.setProductCode(product.getProductCode());*/
             productRepository.save(product);
         }
-
-            /*if (existingProduct.getId() == id) {
-                existingProduct.setProductName(product.getProductName());
-                existingProduct.setProductDescription(product.getProductDescription());
-                existingProduct.setProductPrice(product.getProductPrice());
-                //return ResponseEntity.ok(existingProduct);
-                return existingProduct;
-            }*/
-
-        /*productRepository.(product);
-        return productRepository.findAll();*/
         return productRepository.findAll();
     }
 
     public List<Product> deleteProduct(Long id){
-        //Product existingProduct = productRepository.findProductById(id);
-
-        if(productRepository.existsById(id)){
+        if(productRepository.existsById(id)) {
             productRepository.deleteById(id);
         }
-        /*if(existingProduct.getId() == id){
-            productRepository.delete(existingProduct);
-
-        }*/
-        //productRepository.delete(product);
         return productRepository.findAll();
-
     }
-
 }
